@@ -8,8 +8,9 @@ var url =
 
 void main() async {
   runApp(
-    MaterialApp(
-      home: Container(),
+    const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: Home(),
     ),
   );
 }
@@ -17,4 +18,25 @@ void main() async {
 Future<Map> getData() async {
   http.Response response = await http.get(url);
   return json.decode(response.body);
+}
+
+class Home extends StatefulWidget {
+  const Home({Key? key}) : super(key: key);
+
+  @override
+  _HomeState createState() => _HomeState();
+}
+
+class _HomeState extends State<Home> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.black,
+      appBar: AppBar(
+        title: const Text('\$ Conversor \$'),
+        backgroundColor: Colors.amber,
+        centerTitle: true,
+      ),
+    );
+  }
 }
