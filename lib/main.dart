@@ -4,7 +4,7 @@ import 'dart:async';
 import 'dart:convert';
 
 var url =
-    Uri.parse('https://api.hgbrasil.com/finance?format=json&key=853c4b1c');
+    Uri.parse('https://api.hgbrasil.com/finance?format=json&key=<key>');
 
 void main() async {
   runApp(
@@ -78,7 +78,7 @@ class _HomeState extends State<Home> {
       _clearAll();
       return;
     }
-    
+
     double euro = double.parse(text);
     realController.text = (euro * this.euro!).toStringAsFixed(2);
     dolarController.text = (euro * this.euro! / dolar!).toStringAsFixed(2);
@@ -136,10 +136,13 @@ class _HomeState extends State<Home> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [
-                        const Icon(
-                          Icons.monetization_on,
-                          size: 150.0,
-                          color: Colors.amber,
+                        const Padding(
+                          padding: EdgeInsets.only(top: 20, bottom: 20),
+                          child: Icon(
+                            Icons.monetization_on,
+                            size: 150.0,
+                            color: Colors.amber,
+                          ),
                         ),
                         buildTextField(
                             'Reais', 'R\$', realController, _realChanged),
